@@ -1,0 +1,10 @@
+#!/bin/bash
+#PBS -l nodes=8:ppn=12,walltime=00:05:00
+#PBS -q batch
+#PBS -N run_A9
+#PBS -j oe
+#PBS -V
+
+cd ~/assignments/A9
+#export OMP_NUM_THREADS=2;
+mpiexec -np 8 --map-by ppr:1:node --hostfile $PBS_NODEFILE A9.cx
